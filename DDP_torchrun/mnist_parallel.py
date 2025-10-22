@@ -52,7 +52,7 @@ def init_distributed(rank, world_size):
     os.environ['MASTER_ADDR'] = 'localhost'           # IP address of rank 0 process
     os.environ['MASTER_PORT'] = '12355'               # a free port used to communicate amongst processors
     torch.cuda.set_device(rank)                       #
-    dist.init_process_group("gloo",       #"nccl",                   # backend being used; nccl typically used with distributed GPU training
+    dist.init_process_group("nccl",       #"nccl",                   # backend being used; nccl typically used with distributed GPU training
                             rank=rank,                # rank of the current process being used
                             world_size=world_size)    # total number of processors being used
 
