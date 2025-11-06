@@ -1,0 +1,24 @@
+program: sweeptrain.py  # 1단계에서 작성한 스크립트
+entity: dongjaekim # 본인 wandb 계정명으로 변경
+method: bayes      # 탐색 방법: bayes
+metric:
+  name: test_loss  # 최적화할 목표 Metric
+  goal: minimize   # 목표: 최소화
+
+parameters:
+  learning_rate:
+    # 0.0001 ~ 0.1 사이의 로그 스케일에서 무작위 값 선택
+    distribution: log_uniform_values 
+    min: 0.0001
+    max: 0.1
+
+  epochs:
+    # 3, 4, 5, 6, 7 중 정수 값 무작위 선택
+    distribution: int_uniform
+    min: 3
+    max: 7
+
+  hidden_size:
+    # 32, 64, 128, 256 중 하나를 무작위로 선택
+    # (Bayes는 discrete 값(values)도 잘 처리합니다)
+    values: [32, 64, 128, 256]

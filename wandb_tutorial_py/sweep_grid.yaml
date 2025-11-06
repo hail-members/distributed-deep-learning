@@ -1,0 +1,16 @@
+program: sweeptrain.py  # 1단계에서 작성한 스크립트
+entity: dongjaekim # 본인 wandb 계정명으로 변경
+method: grid       # 탐색 방법: grid
+metric:
+  name: test_loss  # 최적화할 목표 Metric
+  goal: minimize   # 목표: 최소화
+
+parameters:
+  learning_rate:
+    values: [0.01, 0.001]  # 시도할 값 목록
+
+  epochs:
+    values: [3, 5]         # 시도할 값 목록
+
+  hidden_size:
+    values: [32, 64, 128]  # 시도할 값 목록
