@@ -46,7 +46,9 @@ def get_data_loaders(batch_size=64):
 def train_and_evaluate():
     # ⭐ (중요) wandb.init() 호출
     # Sweep Controller가 이 스크립트를 실행할 때 config 값을 주입합니다.
-    run = wandb.init()
+    run = wandb.init(
+        name = "mlp-sweep-run",  # 각 실행(run)의 이름
+        )
     
     # ⭐ (중요) Sweep에서 정의한 하이퍼파라미터 접근
     # config의 기본값(defaults)을 설정할 수도 있습니다.
@@ -103,7 +105,7 @@ def train_and_evaluate():
         # Sweep은 이 값('test_loss')을 기준으로 최적화를 수행합니다.
         wandb.log({
             "epoch": epoch,
-            "test_loss": test_loss,
+            "Test/test loss": test_loss,
             "test_accuracy": test_accuracy
         })
 

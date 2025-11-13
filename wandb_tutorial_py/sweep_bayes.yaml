@@ -1,8 +1,9 @@
 program: sweeptrain.py  # 1단계에서 작성한 스크립트
+project: dddd
 entity: dongjaekim # 본인 wandb 계정명으로 변경
 method: bayes      # 탐색 방법: bayes
 metric:
-  name: test_loss  # 최적화할 목표 Metric
+  name: Test/test loss  # 최적화할 목표 Metric
   goal: minimize   # 목표: 최소화
 
 parameters:

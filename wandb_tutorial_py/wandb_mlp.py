@@ -25,6 +25,10 @@ parser.add_argument('--epochs', type=int, default=5)
 parser.add_argument('--runtype', type=str, default='MainExp')
 
 args = parser.parse_args()
+args.lr
+args.batch_size
+args.epochs
+args.runtype
 
 # --- 1. 설정 및 하이퍼파라미터 ---
 
@@ -56,7 +60,7 @@ num_epochs = 5
 run = wandb.init(
     project="mlp-wandb-tutorial-py", # 프로젝트 이름 (자유롭게 설정)
     entity="dongjaekim",  # "hails" # 개인 계정(저의경우 "dongjaekim") 또는 팀 이름
-    config=args.__dict__,
+    config=args.__dict__, # 항상 이렇게 써야하는건 아니고 이렇게 쓰는 경우가 많아서 이렇게 보여드리는거
     name=args.runtype
 )
 
@@ -130,7 +134,7 @@ optimizer = optim.Adam(model.parameters(), lr=config.lr)
 # 3: 모델 그래프(Graph) 및 그래디언트 저장
 # wandb.watch()는 모델을 관찰하며 그래디언트, 파라미터, 모델 구조를 로깅합니다.
 # (TensorBoard의 add_graph와 유사하지만, 그래디언트까지 추적합니다)
-wandb.watch(model, criterion, log="all", log_freq=100)
+wandb.watch(model, criterion, log="all", log_freq=1)
 print("Wandb: 모델 그래프(watch) 설정 완료.")
 
 # 테스트 로더에서 이미지 배치를 하나 가져옵니다.
