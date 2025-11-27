@@ -101,7 +101,7 @@ def main():
             if model_engine.global_rank == 0:
                 running_loss += loss.item()
                 if i % 100 == 99: # 100 mini-batches마다 출력
-                    print(f'[{epoch + 1}, {i + 1:5d}] loss: {running_loss / 100:.3f}')
+                    print(f'[rank{model_engine.global_rank} {epoch + 1}, {i + 1:5d}] loss: {running_loss / 100:.3f}')
                     running_loss = 0.0
 
     print('Finished Training')
